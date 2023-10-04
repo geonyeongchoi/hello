@@ -6,7 +6,7 @@ Starting for the medium model architectures in the piazza, I tried to find a arc
 Explantations related with the code is also written in the markdown.
 
 
-#Dataset
+# Dataset
 I used different stratagies for the paddings. 
 
 Case 1. Adding zero padding at the beginning and the end of the MFCCs dataset.
@@ -24,7 +24,7 @@ and more time is required for case 2, I did not use it for the last submission.
 
 I used different hyperparameters (batchsize, context size, and etc. But there are no significant difference in the performance.)
 
-##Training models
+# Training models
 
 I tried to train the datasets with different hyperparameters, and record all the results. 
 ex)
@@ -37,3 +37,8 @@ sublists = [random.sample(range(train_data.__len__()), train_data.__len__() // 1
 
 
 Also, I divided training datatsets, and recorded the results in the folder /results. There are no difference in recorded results, so I used whole datasets in here. 
+
+# Results 
+
+The predicted results is recorded as a csv file in results folder. I submitted best results with highest validation accuracy. 
+
