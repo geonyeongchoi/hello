@@ -30,7 +30,7 @@
 - Ensure you have Python installed, along with the necessary libraries: OpenCV, NumPy, Pandas, and PyTurbo.
 - Run the script from the command line, providing the necessary arguments for input video paths and output directories.
 
-# Running details
+# Running details (random forest)
 
 ## Implementation Details
 After experimenting with various models such as XGB and MLP, it was observed that there was no significant difference in model performance. Therefore, training was carried out with Random Forest without splitting the dataset into training and validation sets. Eleven Random Forest models, each with 2000 trees (n_estimator set to 2000), were created, and the mode of the results was used for prediction.
