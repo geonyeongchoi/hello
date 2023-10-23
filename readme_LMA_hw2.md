@@ -47,20 +47,26 @@ The model achieve a classification accuracy > 32.5% on the Kaggle dataset. It ut
 # CNN Feature Extraction System
 
 ## Implementation Details
-This system is designed to extract features from video frames using a Convolutional Neural Network (CNN), specifically ResNet18, implemented in PyTorch. Due to issues with GPU utilization, the system currently operates solely on CPU, which results in an execution time of approximately one hour.
+This system is designed to extract features from video frames using a Convolutional Neural Network, specifically ResNet18, implemented in PyTorch. Due to issues with GPU utilization, the system currently operates solely on CPU, which results in an execution time of approximately one hour. 
+
 ## Execution Time
 Originally intended to run on GPU for faster performance, the system had to be adjusted to run on CPU due to unspecified errors. This adjustment has significantly increased the execution time, taking around one hour to complete the feature extraction process.
 
+## Results
+
+`CNN_to_RF.ipynb`
+
+The random forest model structure used earlier was kept intact. Experimental results showed an accuracy of 80% on the test set. I tried to use ResNet34, but there are errors, so if I use ResNet34, then I may have better results.
+
+# 3D CNN Feature Extraction System
+I attempted to extract features using the instructions provided on GitHub. However, due to errors during GPU usage and timeout errors during CPU usage (even after adjusting the --job_timeout option), I was unable to extract features using the GitHub code (although I successfully modified the code to work). Therefore, I implemented a custom feature extractor code to extract features from videos.
+
+`3d_custom_extracting.ipynb`
 
 ## Results
 
 `3DCNN_to_RF.ipynb`
 
 The random forest model structure used earlier was kept intact. Experimental results showed an accuracy of 80% on the test set.
-
-# 3D CNN Feature Extraction System
-I attempted to extract features using the instructions provided on GitHub. However, due to errors during GPU usage and timeout errors during CPU usage (even after adjusting the --job_timeout option), I was unable to extract features using the GitHub code (although I successfully modified the code to work). Therefore, I implemented a custom feature extractor code to extract features from videos.
-
-`3d_custom_extracting.ipynb`
 
 When extracting features using this code, I exceeded the available GPU memory (11GB), so I extracted features from only a portion of the frames (frames_tensor[:, :, ::5, ::5, ::5]). During extraction, I sampled every fifth frame as well as every fifth width and height. With this data, the prediction performance exceeded an accuracy of 80%, which is suspected to be due to the loss of a significant amount of data during the process of reducing the video's size.
