@@ -5,9 +5,11 @@
 - The `SIFTFeature` stage is responsible for extracting SIFT features from video frames, while the `BagOfWords` stage converts these features into a bag-of-words representation.
 - The detail for running codes follows the github in the handout.
 
-python code/run_sift.py data/labels/train_val.csv
-python code/train_kmeans.py data/labels/train_val.csv data/sift 128 sift_128
-python code/run_bow.py data/labels/train_val.csv sift_128 data/sift
+`python code/run_sift.py data/labels/train_val.csv`
+
+`python code/train_kmeans.py data/labels/train_val.csv data/sift 128 sift_128`
+
+`python code/run_bow.py data/labels/train_val.csv sift_128 data/sift`
 
 ## Execution Time
 - The system is optimized for parallel execution, able to process video data in approximately 1 hour when utilizing 16 CPU cores.
@@ -38,13 +40,27 @@ Each model took approximately 10 minutes to train, resulting in a total training
 
 
 ## Results
-The code's objective is to achieve a classification accuracy of at least 32.5% on the Kaggle dataset. It utilizes an ensemble of Random Forest classifiers with different random seeds for each iteration to enhance robustness and performance.
+
+`sift_to_RF.ipynb`
+The model achieve a classification accuracy > 32.5% on the Kaggle dataset. It utilizes an ensemble of Random Forest classifiers with different random seeds for each iteration to enhance robustness and performance.
 
 # CNN Feature Extraction System
 
-
+## Implementation Details
+This system is designed to extract features from video frames using a Convolutional Neural Network (CNN), specifically ResNet18, implemented in PyTorch. Due to issues with GPU utilization, the system currently operates solely on CPU, which results in an execution time of approximately one hour.
 ## Execution Time
+Originally intended to run on GPU for faster performance, the system had to be adjusted to run on CPU due to unspecified errors. This adjustment has significantly increased the execution time, taking around one hour to complete the feature extraction process.
+
 
 ## Results
 
-## Code Execution Flow
+`3DCNN_to_RF.ipynb`
+
+The random forest model structure used earlier was kept intact. Experimental results showed an accuracy of 80% on the test set.
+
+# 3D CNN Feature Extraction System
+I attempted to extract features using the instructions provided on GitHub. However, due to errors during GPU usage and timeout errors during CPU usage (even after adjusting the --job_timeout option), I was unable to extract features using the GitHub code (although I successfully modified the code to work). Therefore, I implemented a custom feature extractor code to extract features from videos.
+
+`3d_custom_extracting.ipynb`
+
+When extracting features using this code, I exceeded the available GPU memory (11GB), so I extracted features from only a portion of the frames (frames_tensor[:, :, ::5, ::5, ::5]). During extraction, I sampled every fifth frame as well as every fifth width and height. With this data, the prediction performance exceeded an accuracy of 80%, which is suspected to be due to the loss of a significant amount of data during the process of reducing the video's size.
