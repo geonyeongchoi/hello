@@ -54,9 +54,13 @@ Originally intended to run on GPU for faster performance, the system had to be a
 
 ## Results
 
-`CNN_to_RF.ipynb`
+`python code/run_mlp.py cnn --feature_dir data/cnn --num_features 512`
 
-The random forest model structure used earlier was kept intact. Experimental results showed an accuracy of 80% on the test set. I tried to use ResNet34, but there are errors, so if I use ResNet34, then I may have better results.
+After downloading the data, I used mlp.py to train the model. 
+I used mean values of the output of frames. 
+
+<img width="418" alt="image" src="https://github.com/geonyeongchoi/hello/assets/76516262/af618a19-75db-437b-af63-c97240c7f100">
+
 
 # 3D CNN Feature Extraction System
 I attempted to extract features using the instructions provided on GitHub. However, due to errors during GPU usage and timeout errors during CPU usage (even after adjusting the --job_timeout option), I was unable to extract features using the GitHub code (although I successfully modified the code to work). Therefore, I implemented a custom feature extractor code to extract features from videos.
