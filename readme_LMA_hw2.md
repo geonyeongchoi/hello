@@ -63,14 +63,27 @@ I used mean values of the output of frames.
 
 
 # 3D CNN Feature Extraction System
-I attempted to extract features using the instructions provided on GitHub. However, due to errors during GPU usage and timeout errors during CPU usage (even after adjusting the --job_timeout option), I was unable to extract features using the GitHub code (although I successfully modified the code to work). Therefore, I implemented a custom feature extractor code to extract features from videos.
+First, I tried to use r3d_18 to train the model.However, after training the model, I concluded that the feature does not have enough information to surpass the baseline stably (acc <=95%). Thus, I used the most recent model that is available in torchvision, which is swin transformer. (with Swin3D_B_Weights.Swin3D_B_Weights, DEFAULT)
+<img width="690" alt="image" src="https://github.com/geonyeongchoi/hello/assets/76516262/c93c8172-4e80-498e-aa5b-8ce461b3e315">
 
-`3d_custom_extracting.ipynb`
+`swin_extraction.ipynb`
+
+Since the model require a lot of memory, and high CUDA version of GPU (above 11.6 for torchvision 0.16), I decided to use colab to extract features. 
+
+`swin_to_mlp_data_preprocessing.ipynb`
+
+After extracting the features, I modify the structrue of the data that is suitable for the input for mlp.py. 
+
 
 ## Results
 
-`3DCNN_to_RF.ipynb`
+After submitting test cases, I found that high batch size (1024) and low test set size is helpful for train the model. 
+<img width="561" alt="image" src="https://github.com/geonyeongchoi/hello/assets/76516262/d3f754ec-b79f-46d9-bdff-cb7944b79baf">
+Also, having high dropout rate can also boost the performance of the model. Thus, the final structure of our model is shown as follows. 
 
-The random forest model structure used earlier was kept intact. Experimental results showed an accuracy of 80% on the test set.
+<img width="602" alt="image" src="https://github.com/geonyeongchoi/hello/assets/76516262/e0842e25-bfe2-4ceb-9c1d-8114b6d40f57">
 
-When extracting features using this code, I exceeded the available GPU memory (11GB), so I extracted features from only a portion of the frames (frames_tensor[:, :, ::5, ::5, ::5]). During extraction, I sampled every fifth frame as well as every fifth width and height. With this data, the prediction performance exceeded an accuracy of 80%, which is suspected to be due to the loss of a significant amount of data during the process of reducing the video's size.
+`version_all.ipynb`
+
+After using features from swin transformer, I can surpass the baseline easily (acc <97%), and I used ensemble method for stable result. Even though using mode values from 200 predictions does not improve the model performances, I expect that this result is more stable than a single result because of the majority voting, so I can get a stable result with the private result too.
+
