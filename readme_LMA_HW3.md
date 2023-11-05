@@ -66,7 +66,7 @@ For the double fusion, I used average value as for the final score.
 
 ## Early Fusion
 
-In early fusion, I concatenate the features from sound, swin_b, and swin_s to create a single feature vector that represents all modalities. Each feature type is quite large (with dimensions of 200, 1024, and 768), leading to a very high-dimensional input space for the classifier.
+In early fusion,I concatenate the features from sound, swin_b, and swin_s to create a single feature vector that represents all modalities. Each feature type is quite large (with dimensions of 200, 1024, and 768), leading to a very high-dimensional input space for the classifier.
 
 Potential Advantages: This approach can enable the classifier to leverage interactions between features from different modalities right from the start of the model.
 
