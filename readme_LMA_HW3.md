@@ -1,3 +1,36 @@
+# Running codes
+
+I assumed that all the data (including video files) and basic codes exist. So I put only essential parts of my codes.
+
+You can extract the 3D features from the colab by running the following code.
+
+`./swin_extraction.ipynb`
+
+Please move the downloaded features to the 11775-HW2/data
+
+You can extract sound features from the colab by running the following code.
+
+./11775-HW1/sound_extract.ipynb
+
+<img width="806" alt="image" src="https://github.com/geonyeongchoi/hello/assets/76516262/b8c08a9e-33de-462a-a4bf-a433bcfce8e5">
+
+You need following packages. Please install it and restart the kernel. 
+
+You can conduct the different fusion techniques by running the following codes.
+
+## Early fusion
+
+./11775-HW2/HW3_early_fusion.ipynb
+
+## Late fusion
+
+./11775-HW2/HW3_late_fusion.ipynb
+
+## Double fusion
+
+./11775-HW2/HW3_double_fusion.ipynb
+
+
 # Extracting Sound features 
 
 To extract the sound features, I used mp3 file that I extracted in the HW1 following the instruction in HW1. 
