@@ -62,8 +62,7 @@ For the double fusion, I used average value as for the final score.
 
 # Questions in the handout
 
-## 1. Describe the fusion schemes you choose to implement and the features to fuse. Does fusion
-improve the result?
+## 1. Describe the fusion schemes you choose to implement and the features to fuse. Does fusion improve the result?
 
 ## Early Fusion
 
