@@ -62,7 +62,7 @@ For the double fusion, I used average value as for the final score.
 
 # Questions in the handout
 
-1. Describe the fusion schemes you choose to implement and the features to fuse. Does fusion
+## 1. Describe the fusion schemes you choose to implement and the features to fuse. Does fusion
 improve the result?
 
 ## Early Fusion
@@ -89,11 +89,32 @@ Potential Advantages: This approach allows for both intra-modal feature combinat
 
 Potential Disadvantages: There could be a risk of feature redundancy, especially when similar features are combined, which could potentially dilute significant patterns or lead to overfitting.
 
-In the earlier experiments, 
+## Does fusion improve the result?
 
-3. Report the confusion matrix for multi-class classification in your validation set.
+No. Through the experiments, I found that swin_s is the best features for the classification.
+(validation accuracy: Sound: 65% , swin_b: 99.1% , swin_s: 99.3%). 
+After I submitted the final result, predictions with swin_s features have better performance than using different fusion techniques.
+(output3.csv)
 
-4. Report the time your MED system takes for feature extraction and classification on the testing
+<img width="987" alt="image" src="https://github.com/geonyeongchoi/hello/assets/76516262/dc2ed80a-b67c-4da2-a98f-d043bf25236a">
+
+
+It's important to note that the outcome of fusion methods can greatly depend on how complementary the combined features or models are. Fusion tends to be most effective when the individual components capture different aspects of the data and make different kinds of errors, leading to a more robust combined prediction.
+
+In your case, it seems that the swin_s features were strong enough on their own, and combining them with other features didn't lead to any significant improvement. This suggests that swin_s was able to capture the most relevant information for the classification task at hand. It could also indicate that the other features or models were not providing additional complementary information that was helpful for this specific task.
+
+## 2. Report the confusion matrix for multi-class classification in your validation set.
+
+The confusion matrix for multi-class classification having 99.2% and 98% acc in valid and test dataset.
+<img width="975" alt="image" src="https://github.com/geonyeongchoi/hello/assets/76516262/1eae3666-64d1-487e-82e9-64c780c9cc7d">
+
+Confusion matrix
+
+<img width="548" alt="image" src="https://github.com/geonyeongchoi/hello/assets/76516262/469d10df-66bd-43a1-baa9-e5e5fd5f239f">
+
+The classes are fairly balanced in terms of the number of instances, as indicated by the relatively uniform numbers along the diagonal. It is hard to see the misclassifying trends of the model since the accuracy is too high.
+
+## 3. Report the time your MED system takes for feature extraction and classification on the testing
 set.
 
 For whole datasets,
