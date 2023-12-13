@@ -1,5 +1,8 @@
 # SpeechDataset and Associated Models for Speech Recognition
 This README provides detailed information about the SpeechDataset class and associated models for efficient and advanced speech recognition tasks using PyTorch.
+You can run this code if the dataset is located in the right directory. The dataloading cell is commented.
+This code is not written in the colab env. If you want to run it in the colab env, you have to modify the code. 
+This code uses 460 (360 + 100) dataset without using validation dataset as a training dataset. 
 
 ## SpeechDataset Class
 The SpeechDataset class is a custom dataset handler, optimized for speech recognition tasks with PyTorch. It efficiently manages speech data, including Mel Frequency Cepstral Coefficients (MFCCs) and transcripts, ensuring minimal memory usage.
